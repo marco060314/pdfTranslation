@@ -63,8 +63,7 @@ class PowerPointTranslator:
 
 
 if __name__ == "__main__":
-    with open("api.txt", "r") as f:
-        api_key = f.read().strip()
+    api_key = "api key here"
 
     translator = PowerPointTranslator(api_key)
     translator.translate_pptx("powerpoint.pptx", "translated_output.pptx")
