@@ -22,20 +22,14 @@ class PDFRewriter:
 
                 # Step 1: Cover original with a black rectangle
                 
-                inflated_bbox = fitz.Rect(
-                    bbox.x0 + 0.5,
-                    bbox.y0 + 0.5,
-                    bbox.x1 - 0.5,
-                    bbox.y1 - 0.5
-                )
                 
-                page.draw_rect(inflated_bbox, fill=(1, 1, 1), color=None)
+                page.draw_rect(bbox, fill=(1, 1, 1), color=None)
 
                 # Step 2: Try inserting white translated text
                 written = page.insert_textbox(
                         bbox,
                         translated_text,
-                        fontsize=max(font_size-10,4),
+                        fontsize=6,
                         fontname="helv",
                         align=0,
                         color=(0, 0, 0),  # white text
