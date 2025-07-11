@@ -73,4 +73,4 @@ if __name__ == "__main__":
         api_key = f.read().strip()
 
     translator = PowerPointTranslator(api_key)
-    translator.translate_pptx("smart3.pptx", "translated_smart3.pptx")
+    translator.translate_pptx("90deg.pptx", "translated_90deg.pptx")
