@@ -12,7 +12,8 @@ class PowerPointTranslator:
             Use the following glossary and context for translation.
 
             Glossary:
-            -
+            股票代码 - SSE
+            加密狗 - security dongle
 
             Keep the sentence structure and meaning the same and only output the translations:\n\n"""
         )
@@ -72,4 +73,4 @@ if __name__ == "__main__":
         api_key = f.read().strip()
 
     translator = PowerPointTranslator(api_key)
-    translator.translate_pptx("powerpoint.pptx", "translated_output.pptx")
+    translator.translate_pptx("smart3.pptx", "translated_smart3.pptx")
