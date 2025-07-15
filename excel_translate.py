@@ -9,53 +9,62 @@ with open("api.txt", "r") as f:
 client = OpenAI(api_key=api_key)
 
 # Load Excel file
-df = pd.read_excel("documents/excel.xlsx")
+df = pd.read_excel("smart_pages.xlsx")
 batch_size = 100
 german_translations = []
 
-# Translate in batches
 for start in range(0, len(df), batch_size):
     end = min(start + batch_size, len(df))
     batch = df.iloc[start:end]
 
     print(f"🔄 Translating rows {start + 1} to {end} of {len(df)}...")
 
-    # Create prompt for batch
     prompts = []
-    for idx, row in batch.iterrows():
+    row_indices = []
+    for i, (df_idx, row) in enumerate(batch.iterrows(), start=1):
         chinese = row.get("Chinese", "")
         english = row.get("English", "")
-        prompts.append(f"{idx + 1}. Chinese: {chinese}\nEnglish: {english}")
+        prompts.append(f"{i}. Chinese: {chinese} | English: {english}")
+        row_indices.append(df_idx)
 
+    # ✅ Updated prompt to enforce German-only output
     batch_prompt = (
-        "Translate the following Chinese sentences to fluent, professional German. "
-        "Use Chinese if possible and English otherwise. If it is in code, then leave the code as is but translate the text"
-        "Maintain technical accuracy and natural phrasing. Return only the German translations line by line, numbered:\n\n"
-        + "\n\n".join(prompts)
+        "Translate the following to German. If the Chinese is missing, use the English. "
+        "Only return the German translations. Do not include Chinese or English in the output. "
+        "If part of the input is code, leave code unchanged.\n\n"
+        + "\n".join(prompts)
     )
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4-turbo",
+            model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": batch_prompt}],
             temperature=0.2,
-            timeout=30,
+            timeout=60,
         )
 
         content = response.choices[0].message.content.strip()
         lines = content.split("\n")
-        for line in lines:
-            _, _, translation = line.partition(". ")
-            german_translations.append(translation.strip())
+
+        for i, line in enumerate(lines):
+            # ✅ Cleanly handle both numbered and unnumbered responses
+            if ". " in line:
+                _, _, translation = line.partition(". ")
+                german_translations.append((row_indices[i], translation.strip()))
+            else:
+                german_translations.append((row_indices[i], line.strip()))
+
     except Exception as e:
         print(f"❌ Error during batch {start}–{end}: {e}")
-        german_translations.extend([""] * (end - start))
+        for idx in row_indices:
+            german_translations.append((idx, ""))
 
-    time.sleep(1)  # Optional: slight delay to avoid hitting rate limits
+    time.sleep(1)
 
 # Overwrite German column
-df["German"] = german_translations
+for idx, translation in german_translations:
+    df.at[idx, "German"] = translation
 
 # Save result
-df.to_excel("corrected_output.xlsx", index=False)
-print("✅ Translation complete. Saved to corrected_output.xlsx")
+df.to_excel("translated_smart_pages.xlsx", index=False)
+print("✅ Translation complete. Saved to translated_smart_pages.xlsx")

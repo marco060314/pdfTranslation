@@ -1,19 +1,22 @@
 import os
 from pptx import Presentation
 from openai import OpenAI
+from llamaindex import TranslationMemoryIndex
 
 class PowerPointTranslator:
     def __init__(self, api_key):
         self.client = OpenAI(api_key=api_key)
 
     def translate_batch(self, texts, target_language="zh"):
+        
+        tm_index = TranslationMemoryIndex("data\\aligned_output.txt")
+        context = tm_index.query(" ".join(texts))
+        print(context)
+
         prompt = (
             """Translate the following sentences to fluent and professional English and ensure it is grammatically correct. Ensure there is a space between each word and dont capitalize unless necessary. Translate from a manufacturing and technical perspective. 
             Use the following glossary and context for translation.
-
-            Glossary:
-            股票代码 - SSE
-            加密狗 - security dongle
+            {context}
 
             Keep the sentence structure and meaning the same and only output the translations:\n\n"""
         )
@@ -30,7 +33,7 @@ class PowerPointTranslator:
             translations = [line.partition(". ")[2] if ". " in line else line for line in lines]
             return translations
         except Exception as e:
-            print(f"❌ Translation batch failed: {e}")
+            print(f"Translation batch failed: {e}")
             return [""] * len(texts)
 
     def translate_pptx(self, input_path, output_path, batch_size=10):
@@ -38,7 +41,7 @@ class PowerPointTranslator:
         paragraphs = []
         para_refs = []
 
-        # Collect full paragraphs
+
         for slide in prs.slides:
             for shape in slide.shapes:
                 if shape.has_text_frame:
@@ -50,21 +53,21 @@ class PowerPointTranslator:
 
         print(f"Total paragraphs to translate: {len(paragraphs)}")
 
-        # Translate in batches
+
         translated = []
         for i in range(0, len(paragraphs), batch_size):
             batch = paragraphs[i:i+batch_size]
             result = self.translate_batch(batch)
             translated.extend(result)
 
-        # Replace full paragraph text (clearing previous runs)
+
         for para, new_text in zip(para_refs, translated):
             for run in para.runs:
                 run.text = ""
-            para.runs[0].text = new_text  # Use the first run
+            para.runs[0].text = new_text 
 
         prs.save(output_path)
-        print(f"✅ Translated PowerPoint saved to: {output_path}")
+        print(f"Translated PowerPoint saved to: {output_path}")
 
 
 
@@ -73,4 +76,4 @@ if __name__ == "__main__":
         api_key = f.read().strip()
 
     translator = PowerPointTranslator(api_key)
-    translator.translate_pptx("powerpoint.pptx", "translated.pptx")
+    translator.translate_pptx("bbb.pptx", "translated_b.pptx")

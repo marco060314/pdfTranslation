@@ -1,16 +1,20 @@
 import os
+import re
 from docx import Document
 from openai import OpenAI
 
-# Load API key
 with open("api.txt", "r") as f:
     api_key = f.read().strip()
 client = OpenAI(api_key=api_key)
 
+def split_into_sentences(text):
+
+    return re.split(r'(?<=[。！？\.\?!])\s*', text.strip())
+
 def translate_batch(texts, source_lang="Chinese", target_lang="English"):
     prompt = (
         f"Translate the following from {source_lang} to {target_lang}. "
-        "Preserve tone and formatting. Output only the translations, in the same order, line by line:\n\n"
+        "Preserve tone and sentence structure. Output only the translations, line by line:\n\n"
     )
     numbered = "\n".join([f"{i+1}. {text}" for i, text in enumerate(texts)])
     full_prompt = prompt + numbered
@@ -25,37 +29,42 @@ def translate_batch(texts, source_lang="Chinese", target_lang="English"):
         translations = [line.partition(". ")[2] if ". " in line else line for line in lines]
         return translations
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"Error: {e}")
         return [""] * len(texts)
 
-def translate_docx(input_path, output_path, batch_size=20):
+def translate_docx_by_sentence(input_path, output_path, batch_size=20):
     doc = Document(input_path)
-    run_refs = []
-    original_texts = []
+    paragraphs = doc.paragraphs
 
-    # Collect all text runs with non-empty text
-    for para in doc.paragraphs:
-        for run in para.runs:
-            if run.text.strip():
-                run_refs.append(run)
-                original_texts.append(run.text)
+    all_sentences = []
+    para_sentence_map = []
 
-    print(f"🔍 Found {len(original_texts)} text segments to translate.")
 
-    # Translate in batches
-    translated_texts = []
-    for i in range(0, len(original_texts), batch_size):
-        batch = original_texts[i:i + batch_size]
+    for para in paragraphs:
+        sentences = split_into_sentences(para.text)
+        if sentences:
+            para_sentence_map.append((para, len(sentences)))
+            all_sentences.extend(sentences)
+
+    print(f"🔍 Found {len(all_sentences)} sentences to translate.")
+
+
+    translated_sentences = []
+    for i in range(0, len(all_sentences), batch_size):
+        batch = all_sentences[i:i + batch_size]
         translated_batch = translate_batch(batch)
-        translated_texts.extend(translated_batch)
+        translated_sentences.extend(translated_batch)
 
-    # Replace with translations
-    for run, translated_text in zip(run_refs, translated_texts):
-        run.text = translated_text
+
+    idx = 0
+    for para, count in para_sentence_map:
+        reconstructed = " ".join(translated_sentences[idx:idx + count])
+        para.text = reconstructed
+        idx += count
 
     doc.save(output_path)
-    print(f"✅ Translation saved to: {output_path}")
+    print(f"Sentence-level translation saved to: {output_path}")
 
-# Example usage
+
 if __name__ == "__main__":
-    translate_docx("OPT_test.docx", "OPT_translated_test.docx", batch_size=20)
+    translate_docx_by_sentence("docsss.docx", "translated_doc.docx", batch_size=20)
