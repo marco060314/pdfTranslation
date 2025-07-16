@@ -9,14 +9,14 @@ class PowerPointTranslator:
 
     def translate_batch(self, texts, target_language="zh"):
         
-        tm_index = TranslationMemoryIndex("data\\aligned_output.txt")
-        context = tm_index.query(" ".join(texts))
-        print(context)
+        #tm_index = TranslationMemoryIndex("data\\aligned_output.txt")
+        #context = tm_index.query(" ".join(texts))
+        #print(context)
 
         prompt = (
             """Translate the following sentences to fluent and professional English and ensure it is grammatically correct. Ensure there is a space between each word and dont capitalize unless necessary. Translate from a manufacturing and technical perspective. 
             Use the following glossary and context for translation.
-            {context}
+            
 
             Keep the sentence structure and meaning the same and only output the translations:\n\n"""
         )
@@ -76,4 +76,4 @@ if __name__ == "__main__":
         api_key = f.read().strip()
 
     translator = PowerPointTranslator(api_key)
-    translator.translate_pptx("bbb.pptx", "translated_b.pptx")
+    translator.translate_pptx("OPT-BS.pptx", "OPT-bs-translated.pptx")
