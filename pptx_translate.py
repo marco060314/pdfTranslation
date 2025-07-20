@@ -1,37 +1,35 @@
 import os
 from pptx import Presentation
 from openai import OpenAI
-from llamaindex import TranslationMemoryIndex
+
 
 class PowerPointTranslator:
     def __init__(self, api_key):
         self.client = OpenAI(api_key=api_key)
 
-    def translate_batch(self, texts, target_language="zh"):
-        
-        #tm_index = TranslationMemoryIndex("data\\aligned_output.txt")
-        #context = tm_index.query(" ".join(texts))
-        #print(context)
-
+    def translate_batch(self, texts):
         prompt = (
-            """Translate the following sentences to fluent and professional English and ensure it is grammatically correct. Ensure there is a space between each word and dont capitalize unless necessary. Translate from a manufacturing and technical perspective. 
-            Use the following glossary and context for translation.
-            
-
-            Keep the sentence structure and meaning the same and only output the translations:\n\n"""
+            "Translate the following sentences into fluent and professional English for a manufacturing and technical context. "
+            "Use the following glossary:"
+            "密狗 - dongle"
+            "Only return one translated sentence per line in the same order:\n\n"
         )
-        prompt += "\n".join([f"{i + 1}. {text}" for i, text in enumerate(texts)])
+        prompt += "\n".join([f"- {text}" for text in texts])
 
         try:
+            print("⏳ Sending to GPT...")
             response = self.client.chat.completions.create(
                 model="gpt-4",
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.3,
             )
-            content = response.choices[0].message.content
-            lines = content.strip().split("\n")
-            translations = [line.partition(". ")[2] if ". " in line else line for line in lines]
-            return translations
+            content = response.choices[0].message.content.strip()
+            print("✅ GPT Response:")
+            print(content)
+            lines = [line.strip("- ").strip() for line in content.split("\n") if line.strip()]
+            while len(lines) < len(texts):
+                lines.append("")
+            return lines
         except Exception as e:
             print(f"Translation batch failed: {e}")
             return [""] * len(texts)
@@ -41,34 +39,38 @@ class PowerPointTranslator:
         paragraphs = []
         para_refs = []
 
-
         for slide in prs.slides:
             for shape in slide.shapes:
                 if shape.has_text_frame:
                     for para in shape.text_frame.paragraphs:
-                        full_text = "".join(run.text for run in para.runs).strip()
-                        if full_text:
-                            paragraphs.append(full_text)
+                        text = para.text.strip()
+                        if text:
+                            paragraphs.append(text)
                             para_refs.append(para)
 
-        print(f"Total paragraphs to translate: {len(paragraphs)}")
-
+        print(f"📝 Found {len(paragraphs)} paragraphs to translate.")
 
         translated = []
         for i in range(0, len(paragraphs), batch_size):
-            batch = paragraphs[i:i+batch_size]
+            batch = paragraphs[i:i + batch_size]
+            print(f"\n➡️ Translating batch {i}-{i + batch_size}")
             result = self.translate_batch(batch)
             translated.extend(result)
 
-
         for para, new_text in zip(para_refs, translated):
-            for run in para.runs:
-                run.text = ""
-            para.runs[0].text = new_text 
+            try:
+                # Clear all runs
+                for run in para.runs:
+                    run.text = ""
+                if para.runs:
+                    para.runs[0].text = new_text
+                else:
+                    para.add_run().text = new_text
+            except Exception as e:
+                print(f"❌ Failed to set text: {e}")
 
         prs.save(output_path)
-        print(f"Translated PowerPoint saved to: {output_path}")
-
+        print(f"\n✅ Translation saved to: {output_path}")
 
 
 if __name__ == "__main__":
@@ -76,4 +78,4 @@ if __name__ == "__main__":
         api_key = f.read().strip()
 
     translator = PowerPointTranslator(api_key)
-    translator.translate_pptx("OPT-BS.pptx", "OPT-bs-translated.pptx")
+    translator.translate_pptx("blahblahblah.pptx", "translated_bla.pptx")
