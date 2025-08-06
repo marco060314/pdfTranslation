@@ -1,91 +1,80 @@
-import pandas as pd
-from openai import OpenAI
-import os
+import fitz  # PyMuPDF
 import time
-import re
+from openai import OpenAI
 
-# Load API key
-with open("api.txt", "r") as f:
-    api_key = f.read().strip()
-client = OpenAI(api_key=api_key)
+# Load your GPT API key
+client = OpenAI(api_key="YOUR_API_KEY")
 
-# Load Excel file
-df = pd.read_excel("ui_german.xlsx")
-batch_size = 100
-german_translations = []
+# === Step 1: Extract blocks ===
+def extract_blocks_per_page(pdf_path):
+    doc = fitz.open(pdf_path)
+    all_pages = []
+    for page in doc:
+        blocks = page.get_text("blocks")
+        blocks = [b[4].strip() for b in blocks if b[4].strip()]
+        all_pages.append(blocks)
+    doc.close()
+    return all_pages
 
-for start in range(0, len(df), batch_size):
-    end = min(start + batch_size, len(df))
-    batch = df.iloc[start:end]
+# === Step 2: GPT-based alignment ===
+def match_cn_to_en_gpt(cn_blocks, en_blocks):
+    aligned = []
 
-    print(f"🔄 Translating rows {start + 1} to {end} of {len(df)}...")
-
-    prompts = []
-    row_indices = []
-    for i, (df_idx, row) in enumerate(batch.iterrows(), start=1):
-        english = row.get("English", "")
-        prompts.append(f"{i}. English: {english}")
-        row_indices.append(df_idx)
-
-    # Prompt with strict formatting rules
-    batch_prompt = (
-        f"Translate the following {len(prompts)} items into German.\n"
-        f"Some of the items may be in Chinese. Translate into German regardless.\n\n"
-        f"⚠️ Strict output format rules:\n"
-        f"- Output exactly {len(prompts)} lines — no more, no fewer.\n"
-        f"- Each line must begin with its number followed by a period and a space, like this: '1. Text'\n"
-        f"- Do NOT use ':', ')', or merge multiple translations into one line.\n"
-        f"- Do NOT include Chinese or English in the output.\n"
-        f"- Leave any variables, symbols, or code (like %1, {{}} or <>) unchanged.\n"
-        f"- Do NOT include blank lines, comments, or explanations.\n\n"
-        f"Start now:\n\n" + "\n".join(prompts)
-    )
-
-    try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": batch_prompt}],
-            temperature=0.2,
-            max_tokens=3000,
-            timeout=60,
+    for cn in cn_blocks:
+        prompt = (
+            f"You are aligning translated text blocks. "
+            f"Given the Chinese block:\n\"{cn}\"\n\n"
+            f"Choose the best-matching English translation from this list:\n"
+        )
+        for i, en in enumerate(en_blocks):
+            prompt += f"{i+1}. {en}\n"
+        prompt += (
+            "\nRespond ONLY with the number (e.g., '3') of the best matching English block. "
+            "If none match, respond with 0."
         )
 
-        content = response.choices[0].message.content.strip()
-
-        # Extract lines like "1. Translated text" (flexible with . : or ) as delimiter)
-        numbered_lines = re.findall(r"^\s*(\d+)[.:)]\s*(.+)", content, flags=re.MULTILINE)
-
-        # Optional truncation if GPT outputs too many
-        if len(numbered_lines) > len(row_indices):
-            numbered_lines = numbered_lines[:len(row_indices)]
-
-        if len(numbered_lines) != len(row_indices):
-            print(f"⚠️ Warning: Mismatch in expected lines vs returned lines "
-                  f"({len(row_indices)} expected, got {len(numbered_lines)})")
-            print(numbered_lines)
-
-        # ✅ Fallback logic: use GPT if present, else original German column
-        for i, idx in enumerate(row_indices):
-            original_german = df.at[idx, "German"]
-            if i < len(numbered_lines):
-                translated = numbered_lines[i][1].strip()
-                final_translation = translated if translated else original_german
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0
+            )
+            match_idx = int(response.choices[0].message.content.strip())
+            if 1 <= match_idx <= len(en_blocks):
+                en = en_blocks[match_idx - 1]
             else:
-                final_translation = original_german
-            german_translations.append((idx, final_translation))
+                en = "[NO MATCH FOUND]"
+        except Exception as e:
+            en = f"[ERROR: {e}]"
 
-    except Exception as e:
-        print(f"❌ Error during batch {start}–{end}: {e}")
-        for idx in row_indices:
-            # fallback to original German if GPT fails completely
-            german_translations.append((idx, df.at[idx, "German"]))
+        aligned.append((cn, en))
+        time.sleep(1.5)  # rate limit
 
-    time.sleep(1)
+    return aligned
 
-# Overwrite German column with final translations
-for idx, translation in german_translations:
-    df.at[idx, "German"] = translation
+# === Step 3: Save results ===
+def align_all_pages_gpt(cn_pages, en_pages, output_path):
+    total_pages = max(len(cn_pages), len(en_pages))
 
-# Save result
-df.to_excel("translated_german_ui.xlsx", index=False)
-print("✅ Translation complete. Saved to translated_german_ui.xlsx")
+    with open(output_path, "w", encoding="utf-8") as f:
+        for page_idx in range(total_pages):
+            cn_blocks = cn_pages[page_idx] if page_idx < len(cn_pages) else []
+            en_blocks = en_pages[page_idx] if page_idx < len(en_pages) else []
+
+            f.write(f"\n=== Page {page_idx + 1} ===\n")
+            aligned_pairs = match_cn_to_en_gpt(cn_blocks, en_blocks)
+
+            for i, (cn, en) in enumerate(aligned_pairs, 1):
+                f.write(f"{i}.\n[Chinese] {cn}\n[English] {en}\n\n")
+
+    print(f"✅ GPT-aligned output saved to {output_path}")
+
+# === Run ===
+chinese_pdf = "measurementSysCh.pdf"
+english_pdf = "measurementSysEn.pdf"
+output_txt = "aligned_output_gpt.txt"
+
+cn_pages = extract_blocks_per_page(chinese_pdf)
+en_pages = extract_blocks_per_page(english_pdf)
+
+align_all_pages_gpt(cn_pages, en_pages, output_txt)

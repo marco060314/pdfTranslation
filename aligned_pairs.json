@@ -1,0 +1,658 @@
+[
+  {
+    "cn": "一键测量传感器",
+    "en": "One-Click Measurement Sensor SmartFlash Series"
+  },
+  {
+    "cn": "SmartFlash系列",
+    "en": "One-Click Measurement Sensor SmartFlash Series"
+  },
+  {
+    "cn": "功能简介",
+    "en": "Function introduction"
+  },
+  {
+    "cn": "⾼精度运动平台",
+    "en": "High-precision motion platform"
+  },
+  {
+    "cn": "⾼精度最⾼可达1μm",
+    "en": "High precision of up to 1μm"
+  },
+  {
+    "cn": "⾼效率",
+    "en": "Highly efficient parallel computing"
+  },
+  {
+    "cn": "图档导⼊",
+    "en": "Programless drawing import"
+  },
+  {
+    "cn": "⽆需编程",
+    "en": "Programless drawing import"
+  },
+  {
+    "cn": "四通道多⻆度+低⻆度指向性照明组合",
+    "en": "Four-channel multi-angle + low-angle directional lighting"
+  },
+  {
+    "cn": "双远⼼镜头+⾃动升降落射光照明组合",
+    "en": "The combination of elevating and falling light illumination automatically adjusts the height, brightness and angle of the light source"
+  },
+  {
+    "cn": "镜头采⽤双远⼼设计，具有⼤景深及近乎零失真等特点",
+    "en": "To ensure proper functioning and optimal performance"
+  },
+  {
+    "cn": "消除物⽅和像⽅透视畸变，避免照明衰减，提⾼测量精度",
+    "en": "delivering high-contrast, and consistently uniform images to ensure measurement accuracy and repeatability"
+  },
+  {
+    "cn": "升降落射光照明组合",
+    "en": "The combination of elevating and falling light illumination"
+  },
+  {
+    "cn": "⾃动调整光源的⾼度、亮度及⻆",
+    "en": "automatically adjusts the height, brightness and angle of the light source"
+  },
+  {
+    "cn": "优化测量⼯序",
+    "en": "improving measurement accuracy"
+  },
+  {
+    "cn": "⽆需编程",
+    "en": "Programless"
+  },
+  {
+    "cn": "智能编程",
+    "en": "intelligent programming can be achieved by"
+  },
+  {
+    "cn": "现各类产品全尺⼨测量。",
+    "en": "full-size measurement of products."
+  },
+  {
+    "cn": "产品轮廓度⾼效率、⾼精度测量及分析。",
+    "en": "High-efficiency, high-precision measurement and contour"
+  },
+  {
+    "cn": "拥有螺纹、⻮轮及橡胶圈等专⽤测量模块。",
+    "en": "Applicable to measurement of products within a"
+  },
+  {
+    "cn": "⼤视野+影像拼接，实现⼤尺⼨产品快速测量，测量范围可达",
+    "en": "ideal for image stitching and high-precision dimensional measurements."
+  },
+  {
+    "cn": "⼀键测量传感器",
+    "en": "One-Click Measurement Sensor"
+  },
+  {
+    "cn": "SmartFlash系列",
+    "en": "SmartFlash Series"
+  },
+  {
+    "cn": "⼀键测量传感器",
+    "en": "One-Click Measurement Sensor"
+  },
+  {
+    "cn": "SmartFlash系列",
+    "en": "SmartFlash Series"
+  },
+  {
+    "cn": "测量范围315×190mm",
+    "en": "Range of measurement 315*190 mm"
+  },
+  {
+    "cn": "采⽤⾼速度、⾼精度移动平台，搭配软件影像拼接，快速实现",
+    "en": "High-speed and high-precision mobile platform is used and together with software image stitching, can realize measurement of 315*190 view field rapidly."
+  },
+  {
+    "cn": "315×190的视野范围测量",
+    "en": "measurement of 315*190 view field rapidly"
+  },
+  {
+    "cn": "整体光照均匀",
+    "en": "Adjustable ring light source for optimal lighting"
+  },
+  {
+    "cn": "⼯件边缘被突出",
+    "en": "high-precision edge measurement"
+  },
+  {
+    "cn": "影像明暗对⽐明显。",
+    "en": "allows for the capture of clear contour images"
+  },
+  {
+    "cn": "低⻆度指向性照明从侧⽅向照射",
+    "en": "The multi-angle ring light source featuring multiple adjustable lighting units"
+  },
+  {
+    "cn": "在检测周边轮廓时，表⾯⾼度变",
+    "en": "full-size measurement of products."
+  },
+  {
+    "cn": "化改变相机的光路，使影像突出",
+    "en": "a high-stability, high-precision optical image system for"
+  },
+  {
+    "cn": "变化。",
+    "en": "High-efficiency, high-precision measurement and contour analysis."
+  },
+  {
+    "cn": "软件界⾯简洁，功能强⼤，极易学习，任何⼈都能轻松设定和",
+    "en": "easy to learn. Anyone can easily set up and perform"
+  },
+  {
+    "cn": "⾼效并⾏测量",
+    "en": "Efficient parallel measurement"
+  },
+  {
+    "cn": "快速并⾏测量",
+    "en": "Fast parallel measurement: measurement and output of 1600 parts within 7s."
+  },
+  {
+    "cn": "⽀持CAD图档导⼊",
+    "en": "Supports CAD drawing import and achieve automatic offline"
+  },
+  {
+    "cn": "实现快速离线⾃动编程",
+    "en": "programming in a rapid manner."
+  },
+  {
+    "cn": "导⼊CAD图纸图档",
+    "en": "Import of CAD"
+  },
+  {
+    "cn": "程序转换",
+    "en": "Program conversion"
+  },
+  {
+    "cn": "测量并输出报告",
+    "en": "Measurement and report output"
+  },
+  {
+    "cn": "不同类型产品同时测量",
+    "en": "Simultaneous measurement of different types of products"
+  },
+  {
+    "cn": "软件定位识别，⼀次可同时测量100个以上的产品，300个以上",
+    "en": "Software positioning recognition; measures over 100 products and more than 300 parts at the same time."
+  },
+  {
+    "cn": "⽆需对同类产品进⾏单独编程测量",
+    "en": "One-Click measurement can be utilized wherever programming measurement is unnecessary for similar products."
+  },
+  {
+    "cn": "产品任意放置，即可⼀键测量",
+    "en": "One-Click measurement can be utilized wherever programming measurement is unnecessary for similar products."
+  },
+  {
+    "cn": "视野范围内产品任意放置，⽆需夹具定位，模板⾃动匹配测量",
+    "en": "Quickly measure any workpieces within the field of view due to automatic template matching, without needing fixture."
+  },
+  {
+    "cn": "⼯件快速完成测量",
+    "en": "Quickly measure any workpieces within the field of view due to automatic template matching, without needing fixture."
+  },
+  {
+    "cn": "边缘⽑刺可⾃动识别",
+    "en": "Automatic recognition of edge burrs"
+  },
+  {
+    "cn": "检测位置有⽑刺或缺陷，可⾃动识别跳过，以确保测量结果",
+    "en": "Recognizes burr or defect at the point of detection automatically and avoids it to assure stability and high"
+  },
+  {
+    "cn": "的稳定性与⾼精度。",
+    "en": "precision of results of measurement."
+  },
+  {
+    "cn": "特殊边缘处理",
+    "en": "Special edge processing"
+  },
+  {
+    "cn": "测量时⾃动过滤边缘杂点，消除边缘⿊⾊阴影、边缘⽩⾊亮",
+    "en": "Automatically filter out spots, black shadows bright white"
+  },
+  {
+    "cn": "边等⼲扰因素，轻松拾取模糊及有较⼤杂边⼲扰的边缘",
+    "en": "Automatically filter out spots, black shadows bright white edges, and other interferences, enabling effective and automatic measurement of edges with large spots or fuzzy edges."
+  },
+  {
+    "cn": "有效实现了⾃动化测量",
+    "en": "Efficient parallel measurement"
+  },
+  {
+    "cn": "轮廓⽐对功能",
+    "en": "Sub-pixel computing for extraction of edge features"
+  },
+  {
+    "cn": "提取产品影像轮廓与CAD图档标准轮廓进⾏⽐对，快速计算轮廓差异。",
+    "en": "Sub-pixel computing for extraction of edge features"
+  },
+  {
+    "cn": "视野范围内成像畸变⼩",
+    "en": "Quickly measure any workpieces within the field of view"
+  },
+  {
+    "cn": "⻮轮、弹簧、螺纹、间隙",
+    "en": "Software has special modules measuring the threads, gears"
+  },
+  {
+    "cn": "特殊⼯具的测量",
+    "en": "Special measurement modules"
+  },
+  {
+    "cn": "⾃动对焦",
+    "en": "automatic measurement of edges with large spots or fuzzy edges"
+  },
+  {
+    "cn": "特征提取",
+    "en": "Sub-pixel computing for extraction of edge features"
+  },
+  {
+    "cn": "边缘特征提取亚像素计算",
+    "en": "Sub-pixel computing for extraction of edge features"
+  },
+  {
+    "cn": "边缘特征提取使⽤亚像素计算",
+    "en": "Sub-pixel computing is done for extraction of edge features"
+  },
+  {
+    "cn": "将⼀个像素分割成0.01像素以内",
+    "en": "dividing one pixel into data less than 0.01 pixel for computing"
+  },
+  {
+    "cn": "实现⾼精度测量",
+    "en": "to achieve high-precision measurement"
+  },
+  {
+    "cn": "不使⽤亚像素计算",
+    "en": "Sub-pixel not used"
+  },
+  {
+    "cn": "使⽤亚像素计算",
+    "en": "Sub-pixel computing is done for extraction of edge features"
+  },
+  {
+    "cn": "⾮专业检测⼈员，也可进⾏检测操作",
+    "en": "Non-professional detection personnel can operate"
+  },
+  {
+    "cn": "操作便捷",
+    "en": "The operation is simple and convenient, allowing even"
+  },
+  {
+    "cn": "⾮专业检测⼈员也可快速学会操作",
+    "en": "non-professional personnel to quickly learn how to use it."
+  },
+  {
+    "cn": "⽀持业界主流PCL通讯协议",
+    "en": "equipment activation efficiency, and reduces the workload"
+  },
+  {
+    "cn": "⽤⼾轻松实现设备之间的⽆缝集成和⾼效通信",
+    "en": "This minimizes variations between operators, improves"
+  },
+  {
+    "cn": "可调整安装距离",
+    "en": "When kept far away from"
+  },
+  {
+    "cn": "在线智能测量",
+    "en": "Measurement of basic geometric features such as points,"
+  },
+  {
+    "cn": "超⼤景深",
+    "en": "provides large-scale and"
+  },
+  {
+    "cn": "简单⾼效",
+    "en": "uniform illumination. It can"
+  },
+  {
+    "cn": "⼤景深",
+    "en": "uniform illumination. It can"
+  },
+  {
+    "cn": "⼤景深",
+    "en": "be lifted for higher contrast."
+  },
+  {
+    "cn": "光轴对⻬功能",
+    "en": "line finding"
+  },
+  {
+    "cn": "在线智能测量",
+    "en": "Measurement Software Features"
+  },
+  {
+    "cn": "⾼精度图像分析算法",
+    "en": "Provide multiple feature extraction and construction"
+  },
+  {
+    "cn": "⽑刺过滤算法⾃动去除边缘⽑刺、⿊⾊阴影及⽩⾊亮边等影响",
+    "en": "The influence of position on measurement results is negligible."
+  },
+  {
+    "cn": "⼤幅提升了测量重复性和精度",
+    "en": "Small imaging distortion within the field of view"
+  },
+  {
+    "cn": "即使⼯件有位置偏移，也可准确测量",
+    "en": "The influence of position on measurement results is negligible."
+  },
+  {
+    "cn": "镜头远⼼度和均匀性",
+    "en": "uniform illumination."
+  },
+  {
+    "cn": "使⽤普通远⼼镜头的影像",
+    "en": "Imaging of general-purpose"
+  },
+  {
+    "cn": "⼤幅压缩安装尺⼨",
+    "en": "be lifted for higher contrast"
+  },
+  {
+    "cn": "为使⼯程师快速地进⾏光轴调整，配备光轴对⻬功能。",
+    "en": "Supports mainstream industry PCL communication protocols, enabling seamless integration and efficient communication between devices with ease."
+  },
+  {
+    "cn": "进⾏光轴调整，轻松实现⾼精度测量。",
+    "en": "Automatic Saving of Measurement Result Reports"
+  },
+  {
+    "cn": "⽀持业界主流PCL通讯协议",
+    "en": "Provide multiple feature extraction and construction"
+  },
+  {
+    "cn": "⽤⼾轻松实现设备的⽆缝集成和⾼效通信",
+    "en": "Applicable to a wide range of industries including machinery, electronics, molds, injection molding, hardware, rubber, low-voltage electrical"
+  },
+  {
+    "cn": "⼴视野模式：±1μm",
+    "en": "high detection efficiency new standard"
+  },
+  {
+    "cn": "⾼精度模式：±0.5μm",
+    "en": "high-precision image analysis"
+  },
+  {
+    "cn": "透射光",
+    "en": "through-beam"
+  },
+  {
+    "cn": "落射光",
+    "en": "light source"
+  },
+  {
+    "cn": "SmartFlash-2020",
+    "en": "SmartFlash-2020"
+  },
+  {
+    "cn": "双倍双远⼼镜头",
+    "en": "Dual Telecentric Lens (2× Magnification)"
+  },
+  {
+    "cn": "低⻆度指向性照明",
+    "en": "Illumination"
+  },
+  {
+    "cn": "（可选绿⾊）",
+    "en": "Illumination (Optional Green)"
+  },
+  {
+    "cn": "同轴光",
+    "en": "Telecentric Collimated Light Source"
+  },
+  {
+    "cn": "SmartFlash-3020",
+    "en": "SmartFlash-3020"
+  },
+  {
+    "cn": "双倍双远⼼镜头",
+    "en": "Dual Telecentric Lens (2× Magnification)"
+  },
+  {
+    "cn": "30x20mm",
+    "en": "30x20mm"
+  },
+  {
+    "cn": "远⼼平⾏光源（绿⾊）",
+    "en": "Telecentric Collimated Light Source"
+  },
+  {
+    "cn": "四通道多⻆度漫射照明",
+    "en": "Illumination"
+  },
+  {
+    "cn": "（可选绿⾊）",
+    "en": "(Optional Green)"
+  },
+  {
+    "cn": "低⻆度指向性照明",
+    "en": "Low-Angle Directional Illumination"
+  },
+  {
+    "cn": "（可选绿⾊）",
+    "en": "(Optional Green)"
+  },
+  {
+    "cn": "同轴光（选配）",
+    "en": "Coaxial Illumination (Optional)"
+  },
+  {
+    "cn": "低畸变",
+    "en": "Low-Angle Directional Illumination"
+  },
+  {
+    "cn": "图像⽆变形",
+    "en": "Wide Field of View Mode：±3μm"
+  },
+  {
+    "cn": "即使有段差，也可以精准测量",
+    "en": "High Precision"
+  },
+  {
+    "cn": "精度问题",
+    "en": "Accuracy"
+  },
+  {
+    "cn": "趋势图通过测量值的变化趋势，来监控⽣成设备和⽣产过程的异常。",
+    "en": "Trend charts monitor anomalies in production equipment and processes through changes in measurement values."
+  },
+  {
+    "cn": "软件界⾯设计简洁，功能强⼤，任何⼈都能轻松设定和测量。",
+    "en": "The software interface is simple and powerful, allowing anyone to easily set up and measure."
+  },
+  {
+    "cn": "直⽅图实时反映产品质量的波动的状态和分布情况。",
+    "en": "Histograms reflect the state and distribution of product quality fluctuations in real-time."
+  },
+  {
+    "cn": "采⽤创新的畸变校准技术，使测量结果稳定精准。",
+    "en": "Adopts innovative distortion calibration technology for stable and accurate measurement results."
+  },
+  {
+    "cn": "⾼亮LED的发射端配合光学系统同步",
+    "en": "reducing the workload of subsequent image processing."
+  },
+  {
+    "cn": "⼤幅提⾼ CMOS的受光量，瞬间曝光所有像元。",
+    "en": "lossesresulting from image distortion and edge blurring while"
+  },
+  {
+    "cn": "以超快曝光时间15µs进⾏测量，⾼速移动的产品也⽆需减速即",
+    "en": "Imaging of OPT"
+  },
+  {
+    "cn": "可精准测量。",
+    "en": "Imaging of general-purpose lens"
+  },
+  {
+    "cn": "有拖影",
+    "en": "Imaging of"
+  },
+  {
+    "cn": "⽆拖影",
+    "en": "High-Precision Mode：±1.5μm"
+  },
+  {
+    "cn": "玻璃载物台",
+    "en": "workpiece"
+  },
+  {
+    "cn": "避免因倾斜导致的测量误差",
+    "en": "to avoid resolution"
+  },
+  {
+    "cn": "其⾼透光率特性使投影图像更清晰",
+    "en": "Low distortion, no image deformation"
+  },
+  {
+    "cn": "测量精度",
+    "en": "Measurement precision"
+  },
+  {
+    "cn": "应⽤于精密五⾦、电⼦元器件、精密注塑件、家电、线路板、PCB、汽⻋、医疗器械、钟表、仪器仪表等；",
+    "en": "Applicable to precision hardware, electronic components, precision injection-molded parts, home appliances, circuit boards, PCBs, automotive, medical devices, watches, and instrumentation；"
+  },
+  {
+    "cn": "机加⼯件",
+    "en": "Machined Parts"
+  },
+  {
+    "cn": "⼑具",
+    "en": "Cutting Tools"
+  },
+  {
+    "cn": "半导体",
+    "en": "Semiconductors"
+  },
+  {
+    "cn": "冲压件",
+    "en": "Stamped Parts"
+  },
+  {
+    "cn": "SmartAxis-100",
+    "en": "SmartAxis-100"
+  },
+  {
+    "cn": "SmartAxis-58",
+    "en": "SmartAxis-58"
+  },
+  {
+    "cn": "高精度",
+    "en": "precision"
+  },
+  {
+    "cn": "轻松操作",
+    "en": "Easy operation"
+  },
+  {
+    "cn": "专为平⾯2D检测⽽研发的测量传感器",
+    "en": "Measurement sensor developed specifically for 2D planar inspection"
+  },
+  {
+    "cn": "⾼速性能和⾼灵敏度",
+    "en": "High-precision measurement area"
+  },
+  {
+    "cn": "测量结果⼀⽬了然",
+    "en": "Measurement"
+  },
+  {
+    "cn": "智能识别公差标注",
+    "en": "precision"
+  },
+  {
+    "cn": "初次使⽤也可轻松上⼿",
+    "en": "more."
+  },
+  {
+    "cn": "⽆需编程",
+    "en": "Programless drawing import"
+  },
+  {
+    "cn": "可在各种场合进⾏测量",
+    "en": "Measurement"
+  },
+  {
+    "cn": "桌⾯型结构，占⽤空间⼩",
+    "en": "range Field"
+  },
+  {
+    "cn": "可在各种环境下进⾏⾼精度测量",
+    "en": "High-precision measurement area"
+  },
+  {
+    "cn": "进⼀步提⾼其性能和稳定性",
+    "en": "Repeated precision*1"
+  },
+  {
+    "cn": "解决传统检测成本⾼效率低难题",
+    "en": "Operating Environment"
+  },
+  {
+    "cn": "可轻松操作",
+    "en": "Operating"
+  },
+  {
+    "cn": "可测量复杂形状",
+    "en": "Key inspection advantages include dimensional measurement of shaft parts, threads, springs, cutting tools"
+  },
+  {
+    "cn": "可测量⼏何公差",
+    "en": "Applicable to precision hardware, electronic components, precision injection-molded parts, home appliances"
+  },
+  {
+    "cn": "可进⾏⾼精度测量",
+    "en": "High-precision measurement area"
+  },
+  {
+    "cn": "完美融合了这两种测量⼯具的优点",
+    "en": "Key inspection advantages include dimensional measurement of shaft parts, threads, springs, cutting tools, and more."
+  },
+  {
+    "cn": "可在各种地⽅进⾏测量",
+    "en": "Measurement"
+  },
+  {
+    "cn": "可进⾏复杂⼯件的测量",
+    "en": "Measurement"
+  },
+  {
+    "cn": "可进⾏⾼精度⼯件的测量",
+    "en": "High-precision measurement area"
+  },
+  {
+    "cn": "快速应⽤并重测",
+    "en": "Quick application and re-measurement"
+  },
+  {
+    "cn": "⽆需⼈为修改设置",
+    "en": "No manual setting modification required"
+  },
+  {
+    "cn": "通⽤全⾯的⾏业公差标准",
+    "en": "Comprehensive industry tolerance standards"
+  },
+  {
+    "cn": "离线编程",
+    "en": "Offline programming"
+  },
+  {
+    "cn": "操作简单",
+    "en": "Simple operation"
+  },
+  {
+    "cn": "测量对⽐",
+    "en": "Measurement comparison"
+  },
+  {
+    "cn": "实时测量",
+    "en": "Real-time measurement"
+  }
+]
